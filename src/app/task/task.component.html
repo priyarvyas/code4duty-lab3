@@ -1,0 +1,28 @@
+<h2>Add new task to List A</h2>
+<div>
+   <mat-form-field class="example-full-width">
+    <input matInput placeholder="Task Title" [(ngModel)]="newTask.name">
+  </mat-form-field>
+</div>
+<div>
+  <button mat-raised-button [disabled]="newTask.name.length < 1" (click)="addTask()">Save</button>
+</div>
+
+<div>
+  <h2>List A</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let task of tasks">
+        <mat-checkbox matTooltip="click to complete the task" (click)="taskComplete(task)"><p class="wrap-text">{{task.name}}</p></mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+
+    <h2>List B</h2>
+      <mat-list class="done-task">
+        <mat-list-item *ngFor="let task of doneTasks" >
+          <h4 matLine class="wrap-text">{{task.name}}</h4>
+          <button mat-icon-button matTooltip="undo item" (click)="taskUndo(task)"><mat-icon>restore</mat-icon></button>
+          <button mat-icon-button matTooltip="delete item" (click)="deleteTask(task)"><mat-icon>delete_outline</mat-icon></button>
+        </mat-list-item>
+      </mat-list>
+</div>
+
